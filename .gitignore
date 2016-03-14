@@ -20,6 +20,9 @@ htmlcov
 nosetests_*.xml
 tags
 
+# Craft
+craft/
+
 # CSS/SCSS Specific
 *.css.map
 
