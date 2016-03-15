@@ -67,6 +67,7 @@ h1, .h1 {
   text-transform: capitalize;
   font-size: 2em;
   line-height: 1.25;
+  text-shadow: 0 1px 0 #fff;
 }
 @media (min-width: 43.75em) {
   h1, .h1 {
@@ -512,11 +513,15 @@ hr.divider--dark {
 }
 
 .entry__content {
-  max-width: 48em;
-  margin: 0 auto;
+  max-width: 50em;
+  margin: 2em auto;
+  padding: 2em;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid #ddd;
 }
 .entry__content .table {
-  margin: 3em 2em;
+  margin: 3em 0;
   font-size: 0.9em;
 }
 

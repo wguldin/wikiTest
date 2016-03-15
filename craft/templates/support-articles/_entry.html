@@ -17,7 +17,14 @@
 
 {% block content %}
     <article class="entry__content">
-        <h1>{{ entry.title }}</h1>
+        {# TODO: Get on-page nav workin' #}
+        {# <nav>
+            <ul>
+                $parsedHtml = craft()->anchors->parseHtml($html);
+            </ul>
+        </nav> #}
+
+        <h1 class="mt0">{{ entry.title }}</h1>
         <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 
         {% for block in entry.supportArticleBody %}
@@ -25,24 +32,24 @@
                 <table class="table table--rounded">
                     <thead>
                         <tr>
-                            {% for col in block.customTable.columns %}
+                            {% for col in block.table.columns %}
                                 <th align="{{ col.align }}" width="{{ col.width }}">{{ col.heading }}</th>
                             {% endfor %}
                         </tr>
                     </thead>
                     <tbody>
-                        {% for row in block.customTable.rows %}
+                        {% for row in block.table.rows %}
                             <tr>
                                 {% for cell in row %}
-                                    <td align="{{ block.customTable.columns[loop.index0].align }}">{{ cell }}</td>
+                                    <td align="{{ block.table.columns[loop.index0].align }}">{{ cell }}</td>
                                 {% endfor %}
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
 
-            {% elseif block.type == "text" %}
-                {{ block.text|markdown }}
+            {% elseif block.type == "bodyText" %}
+                {{ block.text | anchors('h3') }}
 
             {% endif %}
         {% endfor %}
