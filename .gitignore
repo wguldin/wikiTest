@@ -1,30 +1,36 @@
-# Python specific files
-*.pyc
-*.pyo
+# Craft runtime and backups folders
+# ----------------------------------------------------------------------
+craft/storage/runtime/*
+craft/storage/backups/*
 
-# Generic files to ignore
-*~
-*.lock
-*.DS_Store
-*.swp
-*.out
-*.patch
-*.diff
-*.empty
-*.orig
-.venv
-.coverage
-.pip
-coverage.xml
-htmlcov
-nosetests_*.xml
-tags
+# Uploaded files
+# ----------------------------------------------------------------------
+public/assets/uploads/*
 
-# Craft
-craft/
+# Misc files
+# ----------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-workspace
+*.sublime-project
+*.komodoproject
+.komodotools
+_notes
+dwsync.xml
+logs/*
 
-# CSS/SCSS Specific
-*.css.map
+# css
+# ----------------------------------------------------------------------
+.css.map
 
-# Git-IWS Specific
-.gitconfig
+# vagrant local environment
+# ----------------------------------------------------------------------
+vagrant/
+Vagrantfile
+.vagrant/
