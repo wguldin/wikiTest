@@ -1,0 +1,50 @@
+{#
+ # Support Article entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a Support Article entry’s URL is
+ # requested. That’s because the Support Article section’s Template setting is
+ # set to “support-articles/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested Support Article entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+    <article class="entry__content">
+        <h1>{{ entry.title }}</h1>
+        <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+
+        {% for block in entry.supportArticleBody %}
+            {% if block.type == "table" %}
+                <table class="table table--rounded">
+                    <thead>
+                        <tr>
+                            {% for col in block.customTable.columns %}
+                                <th align="{{ col.align }}" width="{{ col.width }}">{{ col.heading }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in block.customTable.rows %}
+                            <tr>
+                                {% for cell in row %}
+                                    <td align="{{ block.customTable.columns[loop.index0].align }}">{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            {% elseif block.type == "text" %}
+                {{ block.text|markdown }}
+
+            {% endif %}
+        {% endfor %}
+    </article>
+{% endblock %}

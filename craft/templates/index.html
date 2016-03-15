@@ -20,14 +20,21 @@
 {% extends "_layout" %}
 
 {% block content %}
-	<h1>{{ entry.title }}</h1>
+    <h1>{{ entry.title }}</h1>
 
-	{{ entry.body }}
+    {{ entry.body }}
 
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-		{% endfor %}
-	</ul>
+    <ul class="list-unstyled mt4">
+        {% for category in craft.categories.group('modules') %}
+            <li class="module">
+                <a class="module__block" href="{{ category.url }}">
+                    <h3 class="module__header">{{ category }}</h3>
+                    <div>
+                        <span class="module__description">{{ category.moduleDescription }}</span>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

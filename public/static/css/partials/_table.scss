@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+// ==========================================================================
+// Bootstrap Table Overrides
+// ==========================================================================
+
+.table {
+    @include box-shadow(0 1px 7px $shadow_light);
+
+    border: 1px solid $color-alto;
+
+    th {
+        @include background--light;
+
+        border: 0 !important; // Override bootstrap craziness
+    }
+
+    thead + tbody > tr:first-child > td {
+        border-top: 1px solid $color-grey;
+    }
+}
+
+.table--rounded {
+    // assumes one tbody per table, no tfoot.
+    $border-radius: 6px;
+
+    border-spacing: 0;
+    border-radius: $border-radius;
+    border-collapse: separate;
+
+    // Top left corner
+    thead, tbody:first-child, caption + tbody {
+        > tr:first-child > :first-child {
+            border-top-left-radius: $border-radius;
+        }
+    }
+
+    // Top right corner
+    thead, tbody:first-child, caption + tbody {
+        > tr:first-child > :last-child {
+            border-top-right-radius: $border-radius;
+        }
+    }
+
+    // Bottom left corner
+    tbody {
+        > tr:last-child > td:first-child {
+            border-bottom-left-radius: $border-radius;
+        }
+    }
+
+    // Bottom right corner
+    tbody {
+        > tr:last-child > td:last-child {
+            border-bottom-right-radius: $border-radius;
+        }
+    }
+}

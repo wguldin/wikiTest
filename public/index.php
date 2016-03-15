@@ -19,5 +19,3 @@ if (!is_file($path))
 require_once $path;
 
 ?>
-
-test
